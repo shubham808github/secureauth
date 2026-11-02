@@ -1,0 +1,418 @@
+/* ---------- tokens ---------- */
+:root {
+  --ink: #0e1a35;
+  --ink-2: #16254a;
+  --paper: #f2f4f8;
+  --card: #ffffff;
+  --line: #dfe4ee;
+  --text: #14203a;
+  --muted: #66728a;
+  --teal: #12a594;
+  --amber: #d9961a;
+  --blue: #3b6fe0;
+}
+
+/* Override Vite template rules that cap the width and centre the text */
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+}
+#root {
+  max-width: none;
+  padding: 0;
+  text-align: left;
+}
+body {
+  display: block;
+}
+
+/* ---------- shell ---------- */
+.admin-shell {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+.admin-sidebar {
+  width: 248px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  color: #fff;
+  background: var(--ink);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+}
+.admin-brand i {
+  color: var(--teal);
+  font-size: 1.35rem;
+}
+
+.admin-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.admin-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+.admin-nav a:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+}
+.admin-nav a.active {
+  background: rgba(255, 255, 255, 0.09);
+  color: #fff;
+  box-shadow: inset 3px 0 0 var(--teal);
+}
+.admin-nav a:focus-visible,
+.admin-sidebar .btn:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.admin-sidebar-footer {
+  margin-top: auto;
+  padding: 1rem 0.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 0.9rem;
+}
+.admin-sidebar-footer .fw-semibold {
+  overflow-wrap: anywhere;
+}
+
+.admin-main {
+  flex: 1;
+  min-width: 0;
+  padding: 2rem 2.25rem;
+}
+
+.admin-title {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.01em;
+}
+
+/* card used by the users page */
+.stat-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+  box-shadow: none;
+}
+
+/* ---------- overview ---------- */
+.ov-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.ov-sub {
+  margin: 0;
+  color: var(--muted);
+}
+.ov-cta {
+  border-radius: 8px;
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.ov-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 1.25rem;
+  align-items: start;
+}
+.ov-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.ov-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.4rem 1.5rem;
+}
+.ov-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1.1rem;
+}
+.ov-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.ov-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+}
+.ov-link:hover {
+  text-decoration: underline;
+}
+
+.ov-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 1.4rem;
+}
+.ov-strip > div {
+  padding: 0 1.25rem;
+  border-left: 1px solid var(--line);
+}
+.ov-strip > div:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+.ov-num {
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums;
+}
+.ov-label {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+/* the one memorable element: who holds privileged access */
+.ov-bar {
+  display: flex;
+  height: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #e8ecf4;
+}
+.ov-seg {
+  display: block;
+  height: 100%;
+}
+.ov-seg-admin {
+  background: var(--amber);
+  transition: width 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.ov-seg-user {
+  flex: 1;
+  background: var(--blue);
+}
+
+.ov-legend {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-right: 0.45rem;
+}
+.dot-admin { background: var(--amber); }
+.dot-user { background: var(--blue); }
+
+.ov-note {
+  margin: 1.1rem 0 0;
+  padding-left: 0.85rem;
+  border-left: 3px solid var(--amber);
+  color: var(--text);
+  font-size: 0.92rem;
+}
+
+/* newest accounts */
+.ov-table th {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+  padding: 0.6rem 0.25rem;
+  background: transparent;
+}
+.ov-table td {
+  padding: 0.75rem 0.25rem;
+  border-color: var(--line);
+  background: transparent;
+}
+.ov-person {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+.ov-avatar {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.ov-person-text {
+  min-width: 0;
+}
+.ov-person-name {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 260px;
+}
+.ov-person-mail {
+  color: var(--muted);
+  font-size: 0.85rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 260px;
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.18rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.pill-admin {
+  background: #fbf0d9;
+  color: #8a5d05;
+}
+.pill-user {
+  background: #e4ecfc;
+  color: #2a52a8;
+}
+
+/* session card */
+.ov-dl {
+  margin: 0 0 1.1rem;
+}
+.ov-dl > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.ov-dl dt {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+.ov-dl dd {
+  margin: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.ov-can {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+.ov-can li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0;
+  font-size: 0.92rem;
+}
+.ov-can i {
+  color: var(--teal);
+  font-size: 1.1rem;
+}
+.ov-fine {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+/* ---------- users table ---------- */
+.users-table th,
+.users-table td {
+  text-align: left;
+  vertical-align: middle;
+  padding: 0.7rem 0.75rem;
+}
+.users-table .cell-truncate {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.users-table .role-select {
+  min-width: 110px;
+}
+.users-table .btn {
+  white-space: nowrap;
+}
+
+/* ---------- responsive / motion ---------- */
+@media (max-width: 992px) {
+  .ov-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-shell { flex-direction: column; }
+  .admin-sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+  }
+  .admin-nav { flex-direction: row; flex-wrap: wrap; }
+  .admin-brand { margin-bottom: 1rem; }
+  .admin-main { padding: 1.25rem 1rem; }
+  .ov-strip > div { padding: 0 0.75rem; }
+  .ov-num { font-size: 1.6rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ov-seg-admin { transition: none; }
+}
